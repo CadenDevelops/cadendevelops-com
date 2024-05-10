@@ -1,11 +1,54 @@
-<h1>
-  Tryna find something? nothing is here yet. wild how you thought this would be
-  cool F
-</h1>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Caden's Production Archive</title>
+    <link
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="container mt-5">
+      <h1 class="text-center mb-4">Caden's Production Archive</h1>
+      <div class="row">
+        <div class="col-md-6 mx-auto">
+          <ul class="list-group">
+            <!-- Audio file items will be dynamically added here -->
+          </ul>
+        </div>
+      </div>
+    </div>
 
-<p>you fell for the trick 🔥🔥🔥</p>
-<p>
-  By the way, I am a programmer with knowledge in javascript, html/css, lua,
-  python, and more. DM me on discord for inquiries while this site is being
-  created! (Discord: cadendevelops)
-</p>
+    <!-- Bootstrap JS, Popper.js, and jQuery (if needed) -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <script>
+      // JavaScript to dynamically add audio file items
+      const audioFiles = [
+        { title: "My First Song", src: "1.wav" },
+        // Add more audio files as needed
+      ];
+
+      const listGroup = document.querySelector(".list-group");
+
+      audioFiles.forEach((file) => {
+        const listItem = document.createElement("li");
+        listItem.classList.add("list-group-item");
+        listItem.innerHTML = `
+        <div class="d-flex justify-content-between align-items-center">
+          <span>${file.title}</span>
+          <audio controls>
+            <source src="${file.src}" type="audio/mpeg">
+            Your browser does not support the audio element.
+          </audio>
+        </div>
+      `;
+        listGroup.appendChild(listItem);
+      });
+    </script>
+  </body>
+</html>
