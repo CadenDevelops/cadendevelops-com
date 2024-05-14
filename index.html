@@ -10,7 +10,7 @@
     />
     <style>
       body {
-        background-color: #1e1e2f;
+        background-color: #121212;
         color: #ffffff;
         font-family: "Arial", sans-serif;
       }
@@ -19,23 +19,38 @@
       }
       h1,
       h2 {
-        background: linear-gradient(90deg, #6a11cb, #2575fc);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
+        color: #1db954;
+        text-align: center;
       }
-      .list-group-item {
-        background-color: #2e2e3e;
+      .playlist {
+        background-color: #181818;
+        border-radius: 10px;
+        padding: 20px;
+      }
+      .playlist-item {
+        background-color: #282828;
         border: none;
         border-radius: 10px;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        padding: 10px;
         margin-bottom: 10px;
-        transition: transform 0.2s;
+        display: flex;
+        align-items: center;
+        transition: background-color 0.2s;
       }
-      .list-group-item:hover {
-        transform: scale(1.05);
+      .playlist-item:hover {
+        background-color: #383838;
       }
-      .list-group-item audio {
-        width: 100%;
+      .playlist-item img {
+        width: 50px;
+        height: 50px;
+        border-radius: 5px;
+        margin-right: 15px;
+      }
+      .playlist-item audio {
+        margin-left: auto;
+      }
+      .playlist-item span {
+        flex-grow: 1;
       }
     </style>
   </head>
@@ -47,10 +62,8 @@
         recent!
       </h2>
       <div class="row">
-        <div class="col-md-6 mx-auto">
-          <ul class="list-group">
-            <!-- Audio file items will be dynamically added here -->
-          </ul>
+        <div class="col-md-8 mx-auto playlist">
+          <!-- Audio file items will be dynamically added here -->
         </div>
       </div>
     </div>
@@ -81,21 +94,20 @@
         },
       ];
 
-      const listGroup = document.querySelector(".list-group");
+      const playlist = document.querySelector(".playlist");
 
       audioFiles.forEach((file) => {
-        const listItem = document.createElement("li");
-        listItem.classList.add("list-group-item");
+        const listItem = document.createElement("div");
+        listItem.classList.add("playlist-item");
         listItem.innerHTML = `
-        <div class="d-flex justify-content-between align-items-center">
+          <img src="https://via.placeholder.com/50" alt="${file.title}">
           <span>${file.title}</span>
           <audio controls>
             <source src="${file.src}" type="audio/mpeg">
             Your browser does not support the audio element.
           </audio>
-        </div>
-      `;
-        listGroup.appendChild(listItem);
+        `;
+        playlist.appendChild(listItem);
       });
     </script>
   </body>
