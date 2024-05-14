@@ -8,11 +8,41 @@
       href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
       rel="stylesheet"
     />
+    <style>
+      body {
+        background-color: #1e1e2f;
+        color: #ffffff;
+        font-family: "Arial", sans-serif;
+      }
+      .container {
+        margin-top: 50px;
+      }
+      h1,
+      h2 {
+        background: linear-gradient(90deg, #6a11cb, #2575fc);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+      .list-group-item {
+        background-color: #2e2e3e;
+        border: none;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        margin-bottom: 10px;
+        transition: transform 0.2s;
+      }
+      .list-group-item:hover {
+        transform: scale(1.05);
+      }
+      .list-group-item audio {
+        width: 100%;
+      }
+    </style>
   </head>
   <body>
-    <div class="container mt-5">
-      <h1 class="text-center mb-4">Caden's Production Archive</h1>
-      <h2 class="text-center mb-4">
+    <div class="container text-center">
+      <h1 class="mb-4">Caden's Production Archive</h1>
+      <h2 class="mb-4">
         Below are all songs produced by me. The bottom of the list are the most
         recent!
       </h2>
