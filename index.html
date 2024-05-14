@@ -8,24 +8,52 @@
       href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
       rel="stylesheet"
     />
+    <meta property="og:title" content="Caden's Production Archive" />
+    <meta
+      property="og:description"
+      content="Explore and listen to all songs produced by Caden. The bottom of the list are the most recent!"
+    />
+    <meta property="og:image" content="https://yourwebsite.com/logo.png" />
+    <meta property="og:url" content="https://yourwebsite.com" />
+    <meta name="twitter:card" content="summary_large_image" />
     <style>
       body {
         background-color: #121212;
         color: #ffffff;
         font-family: "Arial", sans-serif;
       }
-      .container {
-        margin-top: 50px;
-      }
-      h1,
-      h2 {
-        color: #1db954;
+      .header {
         text-align: center;
+        padding: 100px 20px;
+        background-color: #1db954;
+        color: #121212;
+        border-bottom: 2px solid #0d0d0d;
+      }
+      .header img {
+        width: 150px;
+        height: auto;
+        margin-bottom: 20px;
+      }
+      .header h1 {
+        font-size: 3rem;
+        margin: 20px 0;
+      }
+      .header p {
+        font-size: 1.25rem;
+      }
+      .header .btn {
+        background-color: #121212;
+        color: #1db954;
+        border: none;
+        padding: 10px 20px;
+        font-size: 1.25rem;
+        margin-top: 20px;
       }
       .playlist {
         background-color: #181818;
         border-radius: 10px;
         padding: 20px;
+        margin-top: 50px;
       }
       .playlist-item {
         background-color: #282828;
@@ -40,12 +68,6 @@
       .playlist-item:hover {
         background-color: #383838;
       }
-      .playlist-item img {
-        width: 50px;
-        height: 50px;
-        border-radius: 5px;
-        margin-right: 15px;
-      }
       .playlist-item audio {
         margin-left: auto;
       }
@@ -55,14 +77,19 @@
     </style>
   </head>
   <body>
-    <div class="container text-center">
-      <h1 class="mb-4">Caden's Production Archive</h1>
-      <h2 class="mb-4">
+    <div class="header">
+      <img src="logo.png" alt="Caden's Production Archive Logo" />
+      <h1>Caden's Production Archive</h1>
+      <p>
         Below are all songs produced by me. The bottom of the list are the most
         recent!
-      </h2>
+      </p>
+      <button class="btn" onclick="scrollToTracks()">Explore Tracks</button>
+    </div>
+
+    <div class="container">
       <div class="row">
-        <div class="col-md-8 mx-auto playlist">
+        <div class="col-md-8 mx-auto playlist" id="tracks">
           <!-- Audio file items will be dynamically added here -->
         </div>
       </div>
@@ -74,6 +101,12 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
     <script>
+      function scrollToTracks() {
+        document
+          .getElementById("tracks")
+          .scrollIntoView({ behavior: "smooth" });
+      }
+
       // JavaScript to dynamically add audio file items
       const audioFiles = [
         { title: "My First Song", src: "1.wav" },
@@ -100,7 +133,6 @@
         const listItem = document.createElement("div");
         listItem.classList.add("playlist-item");
         listItem.innerHTML = `
-          <img src="https://via.placeholder.com/50" alt="${file.title}">
           <span>${file.title}</span>
           <audio controls>
             <source src="${file.src}" type="audio/mpeg">
